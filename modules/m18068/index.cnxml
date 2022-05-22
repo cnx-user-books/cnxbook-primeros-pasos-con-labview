@@ -1,0 +1,81 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Programación modular con LabVIEW</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>f559c3e8-6c91-40be-9d86-7fa1d0430824</md:uuid>
+</metadata>
+  <content>
+    <section id="id8177948">
+      <title>Programación modular</title>
+      <para id="id7628541">Como en el resto de los lenguajes de programación, también en <emphasis>LabVIEW</emphasis>, el concepto de programación modular descansa sobre el elemento función. Esto quiere decir que la programación modular se basa en la programación con funciones, es decir, que la función es la base de la programación modular. Muchas de estas funciones son proporcionadas por el propio fabricante de software, y se presentan ordenadas por tipos en las librerías de funciones. Estas librería pueden ser vistas si se pulsa con el botón derecho del ratón sobre cualquier punto del diagrama de nuestra aplicación, a continuación se pulsa en la opción final del menú flotante (doble ^ o extensión), con lo que se muestra el listado de las librerías de funciones. La mayoría de las funciones que utilizaremos en este curso, serán las de la librería <emphasis>Programming</emphasis> (programación), <link target-id="id8746419"/>.</para>
+      <figure id="id8746419">
+        <media id="idp12635216" alt=""><image src="../../media/Fig3-1.png" mime-type="image/png" height="278" width="392"/></media>
+      </figure>
+      <para id="id7626179"> Como se puede observar, si se despliega esta librería, las funciones aparecen ordenadas por tipos. Por ejemplo, en el grupo <emphasis>Structures</emphasis> (estructuras), nos encontramos con las sentencias de repetición <emphasis>while</emphasis> y <emphasis>for</emphasis>, las sentencias de secuenciación, las de selección, etc, con las que trabajaremos más adelante. </para>
+      <para id="id7238857">Por otro lado, el programador tiene la capacidad de generar por sí solo las funciones que necesita para el desarrollo de sus aplicaciones. Cuando una misma tarea es requerida en varios puntos de la aplicación, en lugar de construir esa porción del código (diagrama) de forma repetida, lo que se suele hacer es construirla una vez y llamarla en todos los puntos de la aplicación que sea necesaria. Además, una vez construidas o realizadas las funciones, el programador las puede utilizar en otros proyectos de aplicaciones futuras. Incluso las puede mejorar y/o cambiar para utilizarlas en otras aplicaciones.</para>
+    </section>
+    <section id="id7161756">
+      <title>Creando un SubVI</title>
+      <para id="id7094983">Una función en el lenguaje de programación <emphasis>LabVIEW</emphasis>, es conocida con el nombre de <emphasis>SubVI</emphasis> (sub instrumento virtual). Veamos a continuación, cómo se construye una <emphasis>SubVI</emphasis> y lo fácil que resulta utilizarla. Para ello, se utilizará el ejercicio propuesto <emphasis>Calculadora.vi</emphasis> del módulo anterior y se guardará como <emphasis>Calculadora1.vi</emphasis>. En primer lugar se crea el código con el que se quiere hacer el <emphasis>SubVI</emphasis>, a continuación se marca esa porción o bloque de código con el ratón y se ejecuta <emphasis>Create</emphasis><emphasis>SubVI</emphasis>, desde el menú <emphasis>Edit</emphasis>, con lo que el código marcado queda asociado al nuevo <emphasis>SubVI</emphasis> con el icono standard de <emphasis>LabVIEW</emphasis>, <link target-id="id8196978"/>. Para cambiar este icono, se hace doble click sobre él, donde se abre el archivo del <emphasis>SubVI</emphasis> y se ejecuta <emphasis>Ctrl+T</emphasis> para ver tanto el panel como el diagrama de esta función. Tanto en el panel como en el diagrama, las salidas aparecen nombradas por defecto con <emphasis>Numeric</emphasis> (izda), cuando lo que interesa es nombrarlas según su función (dcha), ya que de lo contrario cuando vayamos a utilizar esta función no sabremos qué proporciona en cada una de las salidas, <link target-id="id8338954"/>.</para>
+      <figure id="id8196978">
+        <media id="idp7170480" alt=""><image src="../../media/graphics1-e78a.png" mime-type="image/png" height="188" width="471"/></media>
+      </figure>
+      <figure id="id8338954">
+        <media id="idp7242512" alt=""><image src="../../media/graphics2-a462.png" mime-type="image/png" height="205" width="487"/></media>
+      </figure>
+      <para id="id8077251">A continuación, se pulsa el botón derecho de ratón sobre el símbolo del icono (arriba a la derecha del diagrama) y se ejecuta <emphasis>Edit Icon</emphasis>, tras lo cual aparece la ventana de definición del icono del <emphasis>SubVI</emphasis>, <link target-id="id7562421"/>. Este editor de iconos es muy fácil de utilizar, ya que es muy intuitivo. Para eliminar el contenido del icono por defecto, se marca todo el contenido del mismo con la herramienta selección, habiéndo seleccionado previamente en la paleta de herramientas, y pulsando <emphasis>Supr</emphasis>. A partir de ahí, se puede escribir desde el teclado, para lo cual ha de seleccionarse la herramienta texto , o también se puede dibujar, utilizando la herramienta lápiz, <link target-id="id7981593"/>.</para>
+      <figure id="id7562421"><media id="idp10077600" alt=""><image src="../../media/graphics3-cc04.png" mime-type="image/png" height="182" width="273"/></media><caption>Editor de iconos de LabVIEW.</caption></figure>
+      <figure id="id7981593"><media id="idp573856" alt=""><image src="../../media/graphics4-4945.png" mime-type="image/png" height="26" width="78"/></media><caption>Herramientas de selección, lápiz y texto.</caption></figure>
+      <para id="id8491438">Para el caso que nos sigue, se utiliza la herramienta lápiz, con el que se dibujan los símbolos de las cuatro operaciones aritméticas, <link target-id="id7598933"/>. Tras ello se pulsa <emphasis>OK</emphasis>, donde se puede observar que el icono que aparece ahora tanto en esta función como en la aplicación donde la hemos creado (<emphasis>Calculadora1.vi</emphasis>) es el definido por nosotros. A continuación, se guarda el archivo <emphasis>SubVI</emphasis> con el nombre <emphasis>Calc4 (SubVI).vi</emphasis>. Notar que el sufijo <emphasis>SubVI</emphasis> que aparece entre paréntesis, en el nombre de la función, es insertado por la herramienta <emphasis>LabVIEW</emphasis> de forma automática.</para>
+      <figure id="id7598933">
+        <media id="idm7984048" alt=""><image src="../../media/graphics5-60a8.png" mime-type="image/png" height="183" width="271"/></media>
+      </figure>
+      <para id="id8336498">El aspecto final que mostraría la aplicación utilizando el <emphasis>SubVI Calc4</emphasis> sería el que aparece en la <link target-id="id7981641"/> izquierda. Conviene comentar que esta función ha sido creada desde la aplicación <emphasis>Calculadora1.vi</emphasis>, pero a partir de ahora, cuando es insertada para ser utilizada en alguna otra aplicación, habrá que identificar cada una de las entradas y salidas, por lo que tendrá que ser expandida desactivando su opción <emphasis>View As Icon</emphasis>, <link target-id="id7981641"/> derecha. Ésto también es válido para las funciones de librería de <emphasis>LabVIEW</emphasis>.</para>
+      <figure id="id7981641">
+        <media id="idp3281248" alt=""><image src="../../media/graphics6-f93f.png" mime-type="image/png" height="187" width="416"/></media>
+      </figure>
+      <para id="id7626333">A partir de ahora, cada vez que se desee insertar cualquier <emphasis>SubVI</emphasis> previamente definido en cualquier aplicación que tengamos abierta en ese momento, basta con ejecutar <emphasis>Select a VI</emphasis>, del menú flotante de <emphasis>Functions</emphasis> del diagrama, <link target-id="id8515966"/>. En realidad, esta forma sirve para introducir tanto <emphasis>SubVI</emphasis>s como <emphasis>VI</emphasis>s, en la aplicación abierta. Es conveniente comentar, que en este caso concreto, en un principio podríamos pensar que se podía haber introducido el <emphasis>VI Calculadora1.vi</emphasis> directamente, el ejercicio propuesto en el módulo anterior. Lo que ocurre es que tal y como se planteó, éste se ejecuta dentro de una sentencia <emphasis>while</emphasis>, por lo que a nosostros nos sobra esta sentencia y por ello no nos sirve incluir este proyecto directamete. En el caso de que ese proyecto no incluyera la sentencia <emphasis>while</emphasis>, entonces sí hubiese servido de <emphasis>SubVI</emphasis>.</para>
+      <figure id="id8515966">
+        <media id="idp4852912" alt=""><image src="../../media/graphics7-c7af.png" mime-type="image/png" height="270" width="115"/></media>
+      </figure>
+      <para id="id7821593">Hay que añadir, que la generación de iconos personalizados no está restringida solamente a <emphasis>SubVI</emphasis>s, también es posible hacerlo en cuanquier <emphasis>VI</emphasis>.</para>
+      <para id="id8061172">De esta manera, utilzando las <emphasis>SubVI</emphasis>s, es posible establecer varios niveles de llamadas entre <emphasis>SubVI</emphasis>s, al igual que ocurre con las funciones en los lenguajes de programación estructurada: una función es llamada desde una aplicación, y ésta a su vez llama a otra y así sucesivamente. Ejecutando <emphasis>View/VI Hierarchy</emphasis> es posible visualizar la jerarquía de llamadas entre <emphasis>SubVI</emphasis>s de una palicación dada. La <link target-id="id8132206"/> muestra la jerarquía del ejemplo que nos ocupa. Notar que el nivel superior es el entorno de desarrollo <emphasis>LabVIEW</emphasis> de la aplicación <emphasis>Calculadora1.vi</emphasis>, y el inferior <emphasis>Calc4.vi</emphasis>.</para>
+      <figure id="id8132206"><media id="idp3460208" alt=""><image src="../../media/graphics8-8594.png" mime-type="image/png" height="190" width="99"/></media><caption>Jerarquía de la nueva aplicación Calculadora1.vi</caption></figure>
+    </section>
+    <section id="id8746864">
+      <title>La ayuda de LabVIEW</title>
+      <para id="id7935822">La herramienta <emphasis>LabVIEW</emphasis> dispone de una potente ayuda que facilita enormemente la tarea de programar. Cuando tenemos alguna duda, nos la puede aclarar acudiendo a ella. Cuando queremos ampliar nuestros conocimientos sobre las posibilidades que tiene la herramienta, también podemos acudir a ella, ya que en realidad se trata de un libro en soporte informático. A continuación se van a describir las opciones más utilizadas de la ayuda de esta herramienta: el menú <emphasis>Help</emphasis>, accesible tanto desde el panel como del diagrama.</para>
+      <para id="id7999495"><emphasis>Help/Show Help Context</emphasis>, al ejecutarla, esta opción queda marcada y ello indica que la ventana de contexto (<emphasis>Context Help</emphasis>) está abierta. Esta ventana muestra la información resumida del objeto sobre el cual se sitúa el cursor del ratón, funciona tanto con objetos del panel como con los del diagrama. La <link target-id="id7244294"/> muestra la información sobre el objeto divisor de dos operandos. </para>
+      <figure id="id7244294">
+        <media id="idp11866304" alt=""><image src="../../media/graphics9-27a1.png" mime-type="image/png" height="134" width="183"/></media>
+      </figure>
+      <para id="id8747145">Si se quiere información más detallada, se pulsa sobre el link <emphasis>Detailed help</emphasis>, dentro de la ventana de contexto, y a continuación aparece otra ventana, la de ayuda de <emphasis>LabVIEW</emphasis> (<emphasis>LabVIEW Help</emphasis>), donde se muestra la información detallada, en este caso, de la función división, <link target-id="id8084862"/>.</para>
+      <figure id="id8084862">
+        <media id="idp11823344" alt=""><image src="../../media/graphics10-407d.png" mime-type="image/png" height="338" width="409"/></media>
+      </figure>
+      <para id="id7903049"><emphasis>Help/Search the LabVIEW Help…</emphasis>, al ejecutar esta opción, aparece la ventana anterior <emphasis>LabVIEW Help</emphasis>. En su parte izquierda muestra tres lengüetas. Así, <emphasis>Contenido</emphasis>, como su nombre indica, muestra la información de las capacidades de <emphasis>LabVIEW</emphasis> organizada por temas y subtemas. <emphasis>Índice</emphasis>, sirve para realizar búsquedas por todo el contenido de la ayuda, y <emphasis>Búsqueda</emphasis>, para hacer una búsqueda más profunda.</para>
+      <para id="id7647060">Justo sobre la mitad de la ventana, en el centro, aparece el botón <emphasis>Place on the block diagram</emphasis>, así, si se pulsa sobre él, el objeto o función del que se muestra la información es colocado sobre el diagrama, sin tener que saber en qué submenú de <emphasis>Functions</emphasis> se encuentra exactamente. Ahora bien, si se desea saber dónde se encuentra exactamente (para ir conociendo la paleta de las funciones), se pulsará sobre el botón <emphasis>Find on the Functions palette</emphasis>, donde a continuación aparecerá la ventana <emphasis>Functions</emphasis>. Siguiendo con el ejemplo de la función <emphasis>Divide</emphasis>, si se desea saber dónde está exactamente esta función, al pulsar el mencionado botón, aparece la ventana de <link target-id="id7820647"/>. Así podemos desplazarnos hacia arriba a través de esta paleta, mediante el coamdo flecha hacia arriba, y conocer exactamente su ubicación en ella.</para>
+      <figure id="id7820647">
+        <media id="idp3851792" alt=""><image src="../../media/graphics11-cb53.png" mime-type="image/png" height="182" width="410"/></media>
+      </figure>
+    </section>
+    <section id="id7846074">
+      <title>Ejercicios propuestos</title>
+      <exercise id="id7607168">
+        <problem id="idp6998048">
+          <para id="id7607171">Explora en la paleta de funciones <emphasis>Functions</emphasis> los menús <emphasis>Programming</emphasis> y <emphasis>Mathematics</emphasis> e intenta comprender las funciones, una a una, que aparecen en ellas. Utiliza para ello el conocimiento que tienes de haber cursado las asignaturas de tu carrera. Seguro que hay funciones que las identificarás nada más verlas, y otras, aunque te lleven algún tiempo, también las acabarás identificando, aunque posiblemente no las identifiques todas. Intenta también, escribiendo en una hoja, dibujar el arbol organizativo de los menús que se te piden conocer.</para>
+        </problem>
+      </exercise>
+      <exercise id="id7740126">
+        <problem id="idp7149264">
+          <para id="id7535354">Realizar un <emphasis>VI</emphasis>, <emphasis>Calculadora2.vi</emphasis>, que contenga a un <emphasis>SubVI</emphasis> llamado <emphasis>AriTriRaInv.vi</emphasis> y que realice 3 tipos de operaciones definidas en 3 <emphasis>SubVI</emphasis>s de un nivel inferior: <emphasis>SubVI Calc4.vi</emphasis> que realiza las cuatro operaciones aritméticas con dos operandos (1 y 2) y que proporciona un resultado por operación, <emphasis>SubVI Trig4.vi</emphasis> que realiza las cuatro operaciones trigonométricas de seno, coseno, tangente y cotangente con el operando 1 con el ángulo en grados, y que también proporciona un resultado por operación, y, <emphasis>SubVI RaiztInv.vi</emphasis>, que realiza las operaciones de raíz cuadrada e inversa con el operando 2, y que proporciona un resultado por operación. Desplegar en pantalla la jerarquía de <emphasis>SubVI</emphasis>s y meditar sobre el resultado.</para>
+        </problem>
+      </exercise>
+      
+      
+      <exercise id="id8090172">
+        <problem id="idp6992816">
+          <para id="id8090175">Busca y asimila la información, utilizando la ayuda de <emphasis>LabVIEW</emphasis>, acerca de las operaciones con matrices (matrix) suma (add), resta (substract), producto (product), determinante (determinant), inversa (inverse) y transpuesta (transpose). Esta información será de gran ayuda para realizar el último ejercicio del tema de los arrays y clusters.</para>
+        </problem>
+      </exercise>
+    </section>
+  </content>
+</document>

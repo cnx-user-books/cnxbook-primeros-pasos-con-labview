@@ -1,0 +1,80 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Instalación de LabVIEW</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>c4e8c16e-a979-41d9-96df-2bc1c0f5764d</md:uuid>
+</metadata>
+  <content>
+    <section id="id11856698">
+      <title>Objetivo</title>
+      <para id="id8052220">La finalidad de esta actividad es que el usuario sea capaz de instalar por sí mismo el software <emphasis>LabVIEW</emphasis> de <emphasis>National Instruments</emphasis> en su ordenador habitual de trabajo. Se supone que el ordenador utilizado por el usuario es de tipo PC, y que el sistema operativo instalado en él es el <emphasis>Windows</emphasis> (XP o superior) de <emphasis>Microsoft</emphasis>. En cuanto al click del ratón, salvo que se diga lo contrario, se supone éste se realiza con el botón izquierdo del mismo.</para>
+      
+    </section>
+    <section id="id11462527">
+      <title>Descripción</title>
+      <para id="id11593719"><term>Paso 1.</term> La instalación de <emphasis>LabVIEW</emphasis> comienza insertando el CD-ROM en el lector correspondiente del ordenador habitual. Con ello, se ejecutará automáticamente el programa <emphasis>autorun</emphasis> de instalación. Si no fuera así, habría que visualizar el contenido del CD-ROM y hacer doble click sobre el <link target-id="id11873525">icono</link> del archivo <emphasis>autorun.exe</emphasis>. </para>
+      <figure id="id11873525"><media id="idp3030816" alt=""><image src="../../media/graphics1-e192.png" mime-type="image/png" height="206" width="325"/></media><caption>Contenido del CD-ROM de LabVIEW 8.5 Student Edition</caption></figure>
+      
+      <para id="id8583813"><term>Paso 2.</term> A continuación, aparece la <link target-id="id11434731">ventana inicial de instalación</link> , donde se hace click sobre <emphasis>Install NI LabVIEW 8.5.1 </emphasis>para que comience la instalación de <emphasis>LabVIEW</emphasis>.</para>
+      <figure id="id11434731"><media id="idp7319536" alt=""><image src="../../media/graphics2-3eab.png" mime-type="image/png" height="218" width="328"/></media><caption>Ventana inicial de instalación</caption></figure>
+      
+      <para id="id7570118"><term>Paso 3.</term> Tras ello aparece la <link target-id="id11448237">ventana de inicio de instalación</link>, en la que hay que hacer click sobre <emphasis>Next</emphasis> para que continúe el proceso.</para>
+      <figure id="id11448237">
+        <media id="idm1444928" alt=""><image src="../../media/graphics3-e4bd.png" mime-type="image/png" height="231" width="323"/></media>
+      </figure>
+      <para id="id8416096"><term>Paso 4.</term> Acto seguido, aparece en pantalla la <link target-id="id8994374">ventana que solicita los datos del usuario y el número de serie del software</link> (impreso sobre el CD-ROM). Lo lógico es que los datos de usuario coincidan con los del propio ordenador. Se elegirá la opción <emphasis>Install NI LabVIEW 8.5.1 with this serial number </emphasis>y se pulsará con el ratón sobre <emphasis>Next</emphasis>. La otra opción (no es la nuestra), permite hacer una instalación de evaluación, sin que para ello sea necesario introducir el número de serie.</para>
+      <figure id="id8994374"><media id="idp7986384" alt=""><image src="../../media/graphics4-66d0.png" mime-type="image/png" height="233" width="326"/></media><caption>Pantalla de entrada de datos de usuario</caption></figure>
+      
+      <para id="id8070008"><term>Paso 5.</term> La pantalla de <link target-id="id9468883"/> nos muestra las ubicaciones por defecto sobre disco duro que se crearán para la instalación de <emphasis>LabVIEW</emphasis>. Salvo que se quieran cambiar (utilizando para ello <emphasis>Browse</emphasis>…), se pulsará sobre <emphasis>Next</emphasis>.</para>
+      <figure id="id9468883">
+        <media id="idm1238784" alt=""><image src="../../media/graphics5-6799.png" mime-type="image/png" height="233" width="326"/></media>
+      </figure>
+      <para id="id8763661"><term>Paso 6.</term> En la ventana que aparece en <link target-id="id9278305"/>, se muestra el software que compone la instalación básica oficial de <emphasis>LabVIEW</emphasis>, donde indica qué cantidad de disco duro necesita la misma. Pulsar sobre <emphasis>Next</emphasis> para continuar.</para>
+      <figure id="id9278305">
+        <media id="idp8464736" alt=""><image src="../../media/graphics6-25c3.png" mime-type="image/png" height="231" width="324"/></media>
+      </figure>
+      <para id="element-590"><term>Paso 7.</term> La ventana de <link target-id="id11484696"/> produce el aviso que recomienda desbloquear el cortafuegos de red detectado, para no tener problemas en la conexión por red con <emphasis>National Instruments</emphasis> durante la activación de la licencia.</para><figure id="id11484696">
+        <media id="idp5489216" alt=""><image src="../../media/graphics7-be21.png" mime-type="image/png" height="230" width="323"/></media>
+      </figure>
+      <para id="id8453647"><term>Paso 8.</term> La ventana de <link target-id="id11740505"/> nos muestra las condiciones del contrato de la licencia de <emphasis>LabVIEW</emphasis>. Es imprescindible estar de acuerdo con estas condiciones para poder continuar con la instalación, para lo cual se selecciona la opción <emphasis>I accept the License agreement(s)</emphasis> y se pulsa sobre <emphasis>Next</emphasis>.</para>
+      <figure id="id11740505">
+        <media id="idp888880" alt=""><image src="../../media/graphics8-5259.png" mime-type="image/png" height="233" width="327"/></media>
+      </figure>
+      <para id="id10698739"><term>Paso 9.</term> La ventana de <link target-id="id9742158"/>, nos indica que estemos al tanto del proceso de la instalación, ya que durante la misma se nos pedirá la inserción del CD que contiene unos drivers, aunque en nuestro caso no será necesario hacerlo. Pulsando <emphasis>Next</emphasis>, es cuando comienza realmente la istalación de <emphasis>LabVIEW</emphasis>.</para>
+      <figure id="id9742158">
+        <media id="idm4153616" alt=""><image src="../../media/graphics9-cce6.png" mime-type="image/png" height="231" width="323"/></media>
+      </figure>
+      <para id="id3118242"><term>Paso 10.</term> La instalación de <emphasis>LabVIEW</emphasis> muestra el aspecto que muestra la <link target-id="id7901990"/> y puede tardar entre 30 y 60 minutos.</para>
+      <figure id="id7901990">
+        <media id="idp3904544" alt=""><image src="../../media/graphics10-a9f3.png" mime-type="image/png" height="233" width="326"/></media>
+      </figure>
+      <para id="id10410632"><term>Paso 11.</term> Cuando culmina la instalación, aparece <link target-id="id10713773">la ventana de finalización de la instalación</link> donde la opción <emphasis>Launch Activation Wizard </emphasis>estará activada (en nuestro caso).</para>
+      <figure id="id10713773">
+        <media id="idp7934016" alt=""><image src="../../media/graphics11-5d54.png" mime-type="image/png" height="232" width="326"/></media>
+      </figure>
+      <para id="id11606131"><term>Paso 12.</term> Esta opción permite activar la instalación con licencia por parte de <emphasis>National Instruments</emphasis>, para lo cual se ofrecen tres posibles formas para ponerse en contacto la empresa creadora de <emphasis>LabVIEW</emphasis>. En nuestro caso, la opción elegida es la de internet <emphasis>Automatically activated through a secure internet connection</emphasis>, tal y como se muestra en <link target-id="id8455393"/>, tras lo cual se pulsará <emphasis>Next</emphasis>.</para>
+      <figure id="id8455393">
+        <media id="idm339472" alt=""><image src="../../media/graphics12-3f34.png" mime-type="image/png" height="267" width="327"/></media>
+      </figure>
+      <para id="id11651537"><term>Paso 13.</term> En la ventana de <link target-id="id10677631"/>, hay que introducir los datos de usuario, y pulsar <emphasis>Next</emphasis>.</para>
+      <figure id="id10677631">
+        <media id="idp860400" alt=""><image src="../../media/graphics13-3036.png" mime-type="image/png" height="268" width="328"/></media>
+      </figure>
+      <para id="id8453852"><term>Paso 14.</term> A continuación se confirma la solicitud de activación pulsando <emphasis>Next</emphasis> y aparece la ventana de <link target-id="id11917656"/>, donde nos indica que este paso puede llevar unos pocos minutos.</para>
+      <figure id="id11917656">
+        <media id="idm612656" alt=""><image src="../../media/graphics14-1075.png" mime-type="image/png" height="268" width="327"/></media>
+      </figure>
+      <para id="id11513771"><term>Paso 15.</term> Al finalizar la activación, se podrá ver la ventana de <link target-id="id10158031"/> donde nos indica que la activación se ha llevado a cabo con éxito, y una dirección de internet donde acudir por si tenemos algún problema. Pulsar <emphasis>Finish</emphasis>.</para>
+      <figure id="id10158031">
+        <media id="idp6710336" alt=""><image src="../../media/graphics15-3eff.png" mime-type="image/png" height="267" width="326"/></media>
+      </figure>
+      <para id="id8420694"><term>Paso 16.</term> Después de la instalación, se nos pedirá reiniciar el ordenador, para lo cual hay que pulsar sobre <emphasis>Restart</emphasis>, <link target-id="id11875590"/>. </para>
+      <figure id="id11875590">
+        <media id="idp1042544" alt=""><image src="../../media/graphics16-fafb.png" mime-type="image/png" height="124" width="317"/></media>
+      </figure>
+      <para id="id7372717">Tras el reinicio del ordenador, en <emphasis>Inicio/Todos los Programas</emphasis> de <emphasis>Windows</emphasis>, podremos comprobar cómo <emphasis>LabVIEW</emphasis> ha sido instalado correctamente. </para>
+      <para id="id10553587">Si por la razón que sea, se desea desinstalar <emphasis>LabVIEW</emphasis> de nuestro ordenador, hay que seguir los <term>Pasos 1 al 6</term> del proceso de instalación de este módulo, y en el último, hacer click sobre el icono de <emphasis>NI LabVIEW 8.5.1</emphasis> y elegir la opción <emphasis>Remove this feature</emphasis>, pulsando sobre ella, tal y como aparece en <link target-id="id8454537"/>.</para>
+      <figure id="id8454537">
+        <media id="idp5455408" alt=""><image src="../../media/graphics17-881b.png" mime-type="image/png" height="238" width="332"/></media>
+      </figure>
+    </section>
+  </content>
+</document>

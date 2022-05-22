@@ -1,0 +1,142 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Introducción a LabVIEW</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>6f535ca9-4572-4b2d-9211-ce78a8053c7f</md:uuid>
+</metadata>
+  <content>
+    <section id="id8730689">
+      <title>Introducción a la instrumentación</title>
+      <para id="id9171145"> La instrumentación está presente en muchos ámbitos de nuestra vida. Un aparato de instrumentación consta básicamente de dos tipos de elementos: indicadores (monitores) y controladores (controles). Los indicadores muestran la información de una magnitud física. Por ejemplo, el indicador de velocidad de un automóvil monitoriza la velocidad a la que circula el coche en cada instante. El cuentarrevoluciones, muestra las revoluciones por minuto a las que gira el motor del coche. Los indicadores pueden mostrar la información de forma gráfica ó de forma numérica.</para>
+      <para id="id8161449">La forma clásica de los indicadores de velocidad y cuentarrevoluciones es gráfica: se trata de una aguja de tipo reloj que apunta sobre una cantidad escalada del valor de velocidad o revolución real, <link target-id="id8930134"/>. Pero actualmente también se utilizan indicadores numéricos para las mismas funciones: velocímetros y cuentarrevoluciones que muestran la información en números.</para>
+      <para id="id8161453"> En cuanto a los controles, son elementos que, al contrario que los indicadores que sólo son capaces de mostrar la información de un proceso pero sin poder actuar sobre él, son capaces de incidir sobre el proceso y así poder controlar alguna de sus magnitudes. Por ejemplo, cuando viajamos en coche y accionamos el interruptor de luz de cruce, las luces de cruce se encienden.</para>
+      <para id="id9148887">Así mismo, cuando actuamos sobre el pulsador de un elevalunas concreto, esa luna comienza a cerrar o a abrir, según la orden haya sido dada en un sentido o en el otro. Cuando en verano hace mucho calor y viajamos en coche, establecemos la temperatura deseada en el interior del coche utilizando el fijador/regulador de temperatura del climatizador (aire acondicionado con termostato), y a continuación el dispositivo climatizador actúa en consecuencia proporcionando aire fresco hasta llegar a la temperatura deseada.</para>
+      <para id="id8746377">En los controles, se distinguen los de control todo-nada (interruptores, pulsadores, conmutadores), y los de control variable (reguladores, potenciómetros, ajustadores), los cuales permiten establecer el valor que se desea para una magnitud dada.</para>
+      <figure id="id8930134">
+        <media id="idp750144" alt=""><image src="../../media/Fig2-1.png" mime-type="image/png" height="324" width="432"/></media>
+        <caption>Panel de un automóvil: cuentarrevoluciones y reloj (izda), velocímetro y kilometraje (dcha), ordenador de a bordo (centro abajo), temperatura del motor y estado del depósito de combustible (centro arriba). </caption>
+      </figure>
+      <para id="id8167886"> Al igual que ocurre con el coche, hay otros ejemplos cotidianos que utilizan la instrumentación, como es el caso del televisor, el teléfono móbil, los frigoríficos más recientes, el GPS. En todos ellos, hay elementos indicadores y elementos controladores o actuadores.</para>
+      <para id="id8874726"> La instrumentación clásica se ha utilizado sobre todo en la industria y en el control de procesos con varias magnitudes. Podemos imaginar o recordar cómo el control y monitorización de una máquina o proceso se hace normalmente a cierta distancia, de forma separada, desde donde realmente se encuentra el mismo. Es el caso de un alto horno, donde debido a las altas temperaturas que utiliza, su control y monitorización se realiza desde el cuarto o sala de mandos: allí habrá un gran panel de indicadores y controladores del alto horno, donde los técnicos destinados en esa tarea estarán vigilando y actuando sobre él de forma constante. Lo mismo ocurre con la sala de máquinas de un barco: hay infinidad de variables críticas que hay que visualizar para vigilarlas y en consecuencia realizar varios controles, si se da el caso. En este sentido, el panel asociado a la sala de máquinas se encontrará situado en otro habitáculo separado, desde donde se tiene toda la información relevante del estado de las máquinas.</para>
+      <para id="id8827507"> En este sentido, las magnitudes que interesa medir, son convertidas en señales eléctricas de corriente continua proporcionales a las mismas mediante sensores, y llevadas al panel para conectarlas a los indicadores con entrada eléctrica. En cuanto a las magnitudes que interesa controlar, son modificadas mediante actuadores de entrada eléctrica y salida igual a la naturaleza de la magnitud. Cuando la instrumentación es clásica, estas señales eléctricas son de tipo analógico y los paneles son rígidos, es decir, no se pueden modificar o ampliar, y normalmente sólo sirven para monitorizar el proceso para el que han sido creados.</para>
+      <para id="id9157067"> Pero en los últimos años, debido a la tendencia de bajada de precios y altas prestaciones que ofrecen los ordenadores actuales, se está utilizando cada vez más la instrumentación virtual. Esto significa, que los viejos y rígidos paneles están siendo sustituídos por pantallas de ordenadores que contienen paneles virtuales: con el mismo aspecto y funcionalidad que los antiguos paneles, pero con la ventaja de poder realizar cambios de forma inmediata y sin coste alguno.</para>
+      <para id="id8930188">Además, se pueden cambiar las formas, formatos y colores de los indicadores y controles, persolnalizándolos y dándoles un aspecto más moderno. La instrumentación virtual tiene la misma base que la clásica, sólo añade conversores analógico-digitales (ADC) para la monitorización y conversores digital-analógicos (DAC) para el control. Esto se debe a que el ordenador, al ser un elemento basado en microprocesador, maneja solamente información digital, por lo que las señales eléctricas a monitorizar han de ser digitalizadas previamente mediante un ADC. Con las magnitudes a controlar sucede algo similar: su correspondiente señal eléctrica es tratada de forma digital por el instrumento virtual (ordenador), pero cuando ha de ser enviada al actuador, se tiene que convertir en una señal analógica mediante un DAC.</para>
+      <para id="id8920549">Las aplicaciones realizadas con <emphasis>LabVIEW</emphasis> son conocidas como Instrumentos Virtuales (Virtual Instruments, VI) y se suelen ejecutadar en un PC. Esto se debe a que estas aplicaciones tienen aspecto de instrumento de medida/control, a través de una pantalla de PC que se denomina Panel (debido a su gran parecido a los paneles de instrumentación clásicos de hardware). En cuanto al término Virtual, indica que se trata de la versión software o flexible del clásico instrumento de medida/control. Lógicamente, un VI también necesita un hardware básico para poder realizar medidas de señales reales y monitorizarlas, e incluso puede realizar control sobre éstas señales. Este hardware básico consta, en la mayoría de los casos, de una tarjeta de adquisición de datos (DAQ), aunque también es posible simular su funcionamiento si no se dispone de ella.</para>
+      <para id="id9038194">A continuación, vamos a ver cómo se genera una sencilla aplicación VI (aplicación de instrumentación virtual). Durante el curso no se utilizarán o realizarán aplicaciones con DAQs, debido a que se supone que la mayoría de los usuarios o alumnos no dispone de una DAQ. Pero sí se van a realizar ejercicios simulando que se tiene una DAQ, lo cual es tan valido como tener una DAQ real para la comprensión de su utilización.</para>
+    </section>
+    <section id="id9038200">
+      <title>Comenzando con LabVIEW</title>
+      <para id="id9027170">Para realizar cualquier aplicación VI hay que ir a <emphasis>Inicio/Todos los Programas</emphasis> en <emphasis>Windows</emphasis>, y ejecutar <emphasis>National Instruments LabVIEW 8.5.1</emphasis>. Tras una breve espera, aparece la pantalla que muestra <link target-id="id8094516"/>, donde se clickará con el ratón sobre <emphasis>Blank VI</emphasis>, en <emphasis>Files/New</emphasis></para>
+      <figure id="id8094516">
+        <media id="idm5499024" alt=""><image src="../../media/Fig2-2.png" mime-type="image/png" height="286" width="326"/></media>
+      </figure>
+      <para id="id8124788">Seguidamente aparece la aplicación VI en blanco, con tres ventanas. La <emphasis>Front Panel</emphasis> (panel), es el panel del VI propiamente dicho: es donde el operario o usuario final de la aplicación podrá monitorizar algunas variables y desde donde podrá controlar otras. La ventana <emphasis>Block Diagram</emphasis> (diagrama) es la que contiene el código fuente para que el panel funcione correctamente, <link target-id="id8169213"/>.</para>
+      <para id="id8507319">Este código fuente es de tipo gráfico, y por lo tanto muy intuitivo: sólo son necerarios unos pocos y sencillos conceptos de programación. El tercer y último elemento es <emphasis>Controls</emphasis>, la paleta flotante de controles e indicadores. Esta paleta es válida para el panel, pero si hacemos activa la ventana de diagrama, entonces la paleta se convierte en <emphasis>Functions</emphasis>, y es valida sólo para el diagrama. Esta paleta contiene librerías de funciones clasificados por tipos, al igual que ocurre con otros lenguajes de programación.</para>
+      <figure id="id8169213"><media id="idp2530160" alt=""><image src="../../media/Fig2-3.png" mime-type="image/png" height="282" width="378"/></media><caption>Aspecto inicial del archivo nuevo.</caption></figure>
+      
+      <para id="id8889490">Lo más práctico y aconsejable suele ser separar el panel y el diagrama, para lo cual se pulsan las teclas <emphasis>Ctrl+T</emphasis>, <link target-id="id8964314"/>. Otra paleta que resulta imprescindible tenerla a la vista es la paleta <emphasis>Tools</emphasis>, para visualizarla basta con ejecutar <emphasis>View/Tools Palette</emphasis>, en panel o en diagrama, ver <link target-id="id8964314"/> parte derecha y arriba.</para>
+      <figure id="id8964314"><media id="idp2886304" alt=""><image src="../../media/graphics1-7bd6.png" mime-type="image/png" height="256" width="342"/></media><caption>Aspecto del nuevo archivo tras ser separados el panel y el diagrama.</caption></figure>
+      
+      <para id="id6485678">Realicemos una sencilla aplicación que suma los valores de dos sumandos dados y devuelve el resultado de la suma. En primer lugar, colocaremos los dos controles sumandos sobre el panel, para lo cual activaremos la ventana panel (clickando sobre ella), y desde la paleta de controles, seleccionaremos la primera opción de <emphasis>Controls</emphasis>, es decir <emphasis>Express</emphasis>, y allí <emphasis>Numeric Controls</emphasis>, y dentro de la misma, el objeto <emphasis>Numeric Control</emphasis>. Al hacer click sobre el objeto, lo arrastraremos al panel para que lo ubiquemos donde más lo deseemos, tras lo cual aparecerá también en el diagrama de la aplicación, <link target-id="id8562900"/>.</para>
+      <figure id="id8562900">
+        <media id="idp1208192" alt=""><image src="../../media/graphics2-92ac.png" mime-type="image/png" height="152" width="425"/></media>
+      </figure>
+      <para id="id9043340">Al principio de la colocación, la etiqueta del objeto aparece marcada con su nombre por defecto, con lo que no está de más aprovechar que está marcada para darle el nombre que le queramos dar, p.e. <emphasis>Sumando 1</emphasis>, tecleando directamente en el teclado del PC. Se repetirá la operación con <emphasis>Sumando 2</emphasis>, <link target-id="id8165624"/>. De otra forma, para cambiar la etiqueta de un objeto, se marca sobre la etiqueta haciendo dos clicks seguidos con el ratón.</para>
+      <figure id="id8165624">
+        <media id="idp13937136" alt=""><image src="../../media/Fig2-5.png" mime-type="image/png" height="199" width="423"/></media>
+      </figure>
+      <para id="id8874703">A continuación vamos a ubicar un indicador que albergue el resultado de la suma. En <emphasis>Controls</emphasis>, <emphasis>Select a Control</emphasis> y seleccionar <emphasis>Modern</emphasis>, tras lo cual seleccionar y ubicar en el panel un objeto de tipo <emphasis>Numeric Indicator</emphasis>, <link target-id="id8165624"/>.</para>
+      <figure id="id8536722">
+        <media id="idp11989024" alt=""><image src="../../media/Fig2-6.png" mime-type="image/png" height="148" width="106"/></media>
+      </figure>
+      <para id="id9294935">Ahora procederemos a realizar el código fuente en el diagrama, el código que define la operación que se va a realizar con estos objetos. Para ello, si hace falta, cambiaremos de ubicación los objetos, tanto en el panel como en el diagrama. Seleccionaremos la ventana del diagrama e insertaremos la función suma desde la paleta <emphasis>Functions</emphasis> en <emphasis>Express</emphasis>, <emphasis>Arithmetic &amp; Comparison</emphasis>, <emphasis>Express Numeric</emphasis>. A continuación se selecciona y se ubica en el diagrama en elemento <emphasis>Add</emphasis>, <link target-id="id8889384"/>.</para>
+      <figure id="id8889384">
+        <media id="idp7822896" alt=""><image src="../../media/graphics3-9c59.png" mime-type="image/png" height="211" width="219"/></media>
+      </figure>
+      <para id="id7997887">Seguidamente, se procederá a conectar las dos entradas y la salida utilizando la herramienta <emphasis>Connect Wire de Tools</emphasis>: se trata de picar y arrastrar para unir los terminales que interesa (una salida con una entrada). Esto se puede hacer directamente, clickando en la salida y arrastrándola hasta la entrada que interese, donde el cambio de trayectoria de la conexión se hace automáticamente, o también se puede hacer def horma manual, decidiendo dónde será cada cambio de trayectoria, para lo cual se pulsará cada vez el botón izquierdo del ratón, <link target-id="id8919452"/> y <link target-id="id8749600"/>.</para>
+      <figure id="id8919452">
+        <media id="idp13385808" alt=""><image src="../../media/graphics4-16b8.png" mime-type="image/png" height="173" width="287"/></media>
+      </figure>
+      <para id="id6518615">El cambio de trayectoria manual resulta interesante cuando se tienen muchas conexiones en un espacio reducido y es conviene llevar un orden para el futuro mantenimiento del código fuente: no interesa que las conexiones aparezcan cruzadas entre ellas.</para>
+      <figure id="id8749600">
+        <media id="idp6653008" alt=""><image src="../../media/graphics5-f001.png" mime-type="image/png" height="244" width="223"/></media>
+      </figure>
+      <para id="id8844276">Para que el diagrama ocupe menos espacio que el debido, es buena práctica reducir el tamaño de los iconos. Para ello, hay que ubicarse con el cursor del ratón sobre el icono y al hacer click con el botón derecho aparece un menú flotante, donde se elige desactivar <emphasis>View As Icon</emphasis>, <link target-id="id8749600"/>. Para borrar una conexión, basta con marcarla con la herramienta <emphasis>Position/Size/Select</emphasis>, <link target-id="id8931039"/>, y aparecerá marcada con línea discontinua, tras lo cual se pulsa la tecla <emphasis>Supr</emphasis> para eliminarla.</para>
+      <figure id="id8931039">
+        <media id="idm5230864" alt=""><image src="../../media/graphics6-dc6f.png" mime-type="image/png" height="115" width="238"/></media>
+      </figure>
+      <para id="id8963407">Si se comienza a establecer una conexión y se da cuenta de que no es la que se deseaba, ésta es eliminada tras pulsar la tecla <emphasis>Esc</emphasis>. La aplicación <emphasis>LabVIEW</emphasis> no permite conectar dos entradas ni dos salidas entre sí. Si se produce algún caso de conexión no permitida en el diagrama, las conexiones implicadas en el conflicto aparecen en línea discontinua con una x en color rojo indicando el lugar exacto del error o conflicto, <link target-id="id8904997"/>. Además, el icono del botón <emphasis>Run</emphasis>, que es una flecha gruesa, aparece rota, <link target-id="id9148914"/>.</para>
+      <figure id="id8904997"><media id="idp5986400" alt=""><image src="../../media/graphics7-9e3d.png" mime-type="image/png" height="177" width="285"/></media></figure>
+      <figure id="id9148914"><media id="idp10594832" alt=""><image src="../../media/graphics8-124a.png" mime-type="image/png" height="18" width="20"/></media><caption>Pulsador Run partido, lo cual indica la existencia de al menos un error en el conexionado del diagrama.</caption></figure>
+      
+      <para id="id8749546">Esto indica que la aplicación desarrollada contiene errores y no se puede ejecutar. Si se pulsa este botón (<emphasis>Run</emphasis>) en estas condiciones, aparecerá la <link target-id="id8826806">ventana de listado de errores</link> que impiden la ejecución normal de la aplicación. De cada item, al ser marcado en la subventana central <emphasis>Show Warnings</emphasis>, se da una breve descripción de la causa del error en la subventan inferior. Al hacer doble click en un item de error en la subventana <emphasis>Show Warnings</emphasis> de <emphasis>Error list</emphasis>, <emphasis>LabVIEW</emphasis> señala en el diagrama dónde se encuentra exactamente. Esto favorece una rápida depuración de la aplicación realizada y es muy útil cuando el diagrama que estamos contruyendo es muy grande, donde no suele ser posible ver todos los errores de la aplicación en la misma pantalla.</para>
+      <figure id="id8826806"><media id="idp7891680" alt=""><image src="../../media/graphics9-6aff.png" mime-type="image/png" height="238" width="280"/></media><caption>Ventana de listado de errores.</caption></figure>
+      
+    </section>
+    <section id="id9260399">
+      <title>Más rápido y más estético</title>
+      <para id="id9260406">Otra forma más rápida de realizar un módulo es la siguiente. Se ubica el operador suma en el diagrama, se selecciona la herramienta <emphasis>Connect wire</emphasis>, y colocándolo encima de cada terminal del sumador, se pulsa el botón derecho del ratón, donde en el menú flotante que aparece, se selecciona <emphasis>Create/Indicator</emphasis>, en el caso de la salida, <link target-id="id8963506"/>, y <emphasis>Create/Control</emphasis>, en el caso de las dos entradas. En las aplicaciones donde los valores de las entradas sean siempre constantes, entonces se elegirá <emphasis>Create/Constant</emphasis> para éstas.</para>
+      <figure id="id8963506">
+        <media id="idp12890400" alt=""><image src="../../media/graphics10-1e9e.png" mime-type="image/png" height="159" width="228"/></media>
+      </figure>
+      <para id="id8919570">Finalmente, el aspecto del módulo será el que aparece a la izquierda de <link target-id="id5115126"/>, que tras deseleccioar la vista de los sumandos y resutado del modo icono, queda como se muestra en el centro de <link target-id="id5115126"/>. Cuando hay muchas señales de entrada y salida colocadas en columna, suele ser una buena práctica, con la intención de aprovechar el espacio disponible, desplazar la etiqueta que lleva su nombre, a la izquierda de cada elemento entrada, y a la derecha de cada elemento de salida, <link target-id="id5115126"/>.</para>
+      <figure id="id5115126">
+        <media id="idp4968864" alt=""><image src="../../media/graphics11-f876.png" mime-type="image/png" height="103" width="492"/></media>
+      </figure>
+      <para id="id8168616">Al mismo tiempo, en el lado del panel, también es conveniente llevar un orden de colocación para mantener a estética del instrumento virtual. Se trata de de ir alineando los objetos del mismo tipo, en este caso los dos sumandos, para lo cual son previamente seleccionados con el ratón (definiendo un área que los incluya o los toque). A continuación se pulsa sobre el comando <emphasis>Align Objects</emphasis>, y se elige la opción <emphasis>Left Edges</emphasis> seguidamente, como los sumandos permanecen aún marcados y la distancia hasta el indicador de salida se estima que es muy grande, se pica sobre ellos y son arrastrados a un punto más cercano a la salida. Ahora, se seleccionan el primer sumando y la salida, ya que no están alineados horizontalmente, y se ejecuta de nuevo el comando <emphasis>Align Objects</emphasis>, donde ahora se elige la opción <emphasis>Top Edges</emphasis>, <link target-id="id9295909"/>.</para>
+      <figure id="id9295909">
+        <media id="idp3772592" alt=""><image src="../../media/graphics12-c973.png" mime-type="image/png" height="107" width="419"/></media>
+      </figure>
+      <para id="id9295933">El aspecto final del panel es el que muestra la <link target-id="id9295944"/>, donde todos sus elementos aparecen alineados.</para>
+      <figure id="id9295944">
+        <media id="idp8180064" alt=""><image src="../../media/graphics13-7f2f.png" mime-type="image/png" height="61" width="91"/></media>
+      </figure>
+    </section>
+    <section id="id6038243">
+      <title>Ejecución de la aplicación</title>
+      <para id="id6038251">Una vez finalizada la aplicación y en ausencia de errores de conexionado, se puede proceder a su ejecución. Pero antes, es conveniente guardar la aplicación desde el menú <emphasis>File/Save</emphasis>. En este caso, el nombre que le daremos a la misma será <emphasis>Sumador.vi</emphasis> (la extensión .vi será proporcionada por <emphasis>LabVIEW</emphasis> de forma automática), <link target-id="id6038299"/>. </para>
+      <figure id="id6038299">
+        <media id="idp8930032" alt=""><image src="../../media/graphics14-1d96.png" mime-type="image/png" height="235" width="323"/></media>
+      </figure>
+      <para id="id6038322">El comando que hace posible la ejecución de la aplicación es <emphasis>Run</emphasis>, donde se puede ejecutar pulsando el botón <emphasis>Run</emphasis>, <link target-id="id6038365"/>, o desde el menú <emphasis>Operate/Run</emphasis>.</para>
+      <figure id="id6038365"><media id="idp5424064" alt=""><image src="../../media/graphics15-ad22.png" mime-type="image/png" height="18" width="21"/></media><caption>Pulsador Run.</caption></figure>
+      
+      <para id="id8044175">Pero antes, es conveniente dar dos valores distintos de 0 a los dos sumandos, utilizando la herramienta <emphasis>Operate Value</emphasis>, <link target-id="id9334492"/>, con la cual pulsando sobre los variadores de valor de los controles <emphasis>Sumando1</emphasis> y <emphasis>Sumando2</emphasis> se podrán cambiar sus valores. No obstante, esto valores son enteros, si se deseara que fueran números con decimales, habría que clickar con el cursor del ratón sobre la casilla del sumador en cuestión y escribir desde el teclado. Notar que para el punto decimal se utiliza la coma.</para>
+      <figure id="id9334492">
+        <media id="idp13723376" alt=""><image src="../../media/graphics16-81eb.png" mime-type="image/png" height="91" width="263"/></media>
+      </figure>
+      <para id="id9334516">A continuación se pulsa <emphasis>Run</emphasis> y el resultado es el mostrado por <link target-id="id9334535"/>.</para>
+      <figure id="id9334535">
+        <media id="idp10600144" alt=""><image src="../../media/graphics17-6d96.png" mime-type="image/png" height="82" width="126"/></media>
+      </figure>
+      <para id="id9334559">En realidad, la aplicación se ha ejecutado una sola vez y después se ha salido del modo de ejecución. En la práctica, una aplicación VI se está ejecutando continuamente, ya que si no no tiene sentido alguno. En el caso de la aplicación <emphasis>Sumador.vi</emphasis>, lo suyo sería que se estuviera ejecutado en todo momento para que nos proporcionara en tiempo real de ejecución el resultado de la suma de los dos sumandos que en cualquier momento podríamos cambiar, como si fuera una calculadora que está encendida o funcionando.</para>
+      <para id="id9334592">En <emphasis>LabVIEW</emphasis> existen dos formas para que la ejecución de una aplicación sea continua. La primera, la ofrece directamente <emphasis>LabVIEW</emphasis> con la opción <emphasis>Run</emphasis><emphasis>Continuously</emphasis>. Para detener la ejecución, hay que pulsar sobre el <emphasis>botón</emphasis><emphasis> Abort Execution</emphasis>, <link target-id="id8044252"/>.</para>
+      <figure id="id8044252"><media id="idp10041872" alt=""><image src="../../media/graphics18.png" mime-type="image/png" height="28" width="55"/></media><caption>Pulsador Run Continuously, izquierda, y Abort Execution, derecha.</caption></figure>
+      
+      <figure id="id8044285">
+        <media id="idp10389568" alt=""><image src="../../media/graphics19.png" mime-type="image/png" height="156" width="284"/></media>
+      </figure>
+      <para id="id8044309">La segunda forma de ejecución continua de las aplicaciones VI de <emphasis>LabVIEW</emphasis>, es seguramente la más utilizada y extendida entre los programadores de los VI de esta marca. Se trata de utilizar el comando <emphasis>Run</emphasis> pero habiendo construido previamente una sentencia repetitiva o bucle de tipo <emphasis>while</emphasis> donde se inserta todo el código de nuestra aplicación. Este bucle se ejecutará en todo momento mientras no se pulse el pulsador, normalmente de tipo <emphasis>STOP</emphasis>, conectado a su condición de permanencia. Para ello, se pulsa sobre el diagrama con el botón derecho del ratón y se elige la función <emphasis>While Loop</emphasis>, <link target-id="id8043895"/>, y se lleva o arrastra al diagrama, para rodear al todo el código de nuestra aplicación, picando en un extremo y arrastrando hasta el otro, que se encuentra en su diagonal.</para>
+      <figure id="id8043895">
+        <media id="idp7971792" alt=""><image src="../../media/graphics20.png" mime-type="image/png" height="161" width="251"/></media>
+      </figure>
+      <para id="id8043921">Como se puede observar, el pulsador <emphasis>STOP</emphasis> para detener el bucle while aparece tanto en el diagrama, como en el panel (desde donde será pulsado), <link target-id="id8043952"/>. En este segundo caso, la ejecución (continua) dará comienzo pulsando el comando <emphasis>Run</emphasis>, y terminará pulsando el pulsador <emphasis>STOP</emphasis>.</para>
+      <figure id="id8043952">
+        <media id="idm5907856" alt=""><image src="../../media/graphics21.png" mime-type="image/png" height="135" width="433"/></media>
+      </figure>
+    </section>
+    <section id="id8043977">
+      <title>Ejercicios propuestos</title>
+      
+      <exercise id="element-348"><problem id="idp6676016">
+  <para id="element-314">
+    Observa a tu alrededor y cita al menos diez artilugios o aparatos que presenten un panel de instrumentación, real o virtual, identificando y citando los diversos elementos indicadores y controladores que dispongan.
+  </para>
+</problem></exercise><exercise id="id8043995"><problem id="idp13916496">
+          <para id="id8043998">Desarrollar la aplicación <emphasis>Calculadora.vi</emphasis> que efectúe las cuatro operaciones aritméticas (suma, resta, producto y división) con dos operandos y proporcione el resultado en cuatro indicadores, uno por operación, <link target-id="id8044009"/>.</para>
+        </problem>
+      </exercise>
+      <figure id="id8044009">
+        <media id="idp9230656" alt=""><image src="../../media/graphics22.png" mime-type="image/png" height="203" width="282"/></media>
+      </figure>
+    </section>
+  </content>
+</document>

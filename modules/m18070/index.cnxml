@@ -1,0 +1,116 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Sentencias en LabVIEW</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>39bd8fc0-5d2e-4537-966d-968c47e89740</md:uuid>
+</metadata>
+  <content>
+    <section id="id10056425">
+      <title>Sentencias de selección</title>
+      <para id="id9980750"> Se trata de un tipo de sentencia que permite ejecutar un código dado u otro, según el valor que tenga la variable de entrada de la sentencia de selección. Este tipo de sentencia se llama <emphasis>Case Structure</emphasis> y se encuentra en <emphasis>Functions/Programming/Structures</emphasis>. Esta sentencia puede ser utilizada para dos casos, o para más de dos o casos múltiples.</para>
+      <para id="id9627304">En el ejemplo que se muestra en <link target-id="id9443317"/>, se pretenden obtener solo los valores aleatorios entre 0 y 0'7 a partir de la función que genera números aleatorios entre 0 y 1 (<emphasis>Functions/Programming/Numeric/Random Number</emphasis>). Entonces, se recurre a la función de comparación <emphasis>Greater or Equal?</emphasis> de la paleta <emphasis>Functions/Programming/Comparison</emphasis>, ya que ésta proporciona una salida booleana <emphasis>true</emphasis>, si 0'7 es mayor o igual que el valor aleatorio generado, y <emphasis>false</emphasis>, si no es así. En este sentido, la salida en el caso true será el valor aleatorio generado, y en caso contrario, 0'7 , ya que en ese caso el valor aleatorio es superior a éste.</para>
+      <figure id="id9443317">
+        <media id="idm3653344" alt=""><image src="../../media/graphics1-58f6.png" mime-type="image/png" height="98" width="448"/></media>
+      </figure>
+      <para id="id9594678">Para los casos de más de dos entradas, es decir, los de entradas múltiples, se inserta una sentencia case en el diagrama. Inicialmente éste está configurada para el primer caso, con lo que tendremos que modificarlo. En primer lugar, se cambia la entrada de tipo booleano a tipo constante entero: se crea una constante de tipo entero en el diagrama desde <emphasis>Functions/Programming/Numeric/Numeric Constant</emphasis>. Si se desea que este elemento pase a ser un control, solo hay que sustituirlo por un elemento de ese tipo. Seguidamente, clickando sobre el <emphasis>Selector Label</emphasis> con el botón derecho se elige la opción <emphasis>Duplicate Case</emphasis>, donde al repetir la operación se van añadiendo los caso 2, 3, 4 …, <link target-id="id10345596"/>. Ahora solo queda incluir en cada caso el módulo de código correspondiente. </para>
+      <figure id="id10345596">
+        <media id="idm8711616" alt=""><image src="../../media/graphics2-d55a.png" mime-type="image/png" height="93" width="322"/></media>
+      </figure>
+      <para id="id10417871">Para borrar uno de los casos, se repite la operación, pero ejecutando en ese caso <emphasis>Delete Case</emphasis>. La <link target-id="id10567480"/> muestra el panel resultado final en funcionamiento.</para>
+      <figure id="id10567480">
+        <media id="idm5850192" alt=""><image src="../../media/graphics3-5d5a.png" mime-type="image/png" height="104" width="163"/></media>
+      </figure>
+    </section>
+    <section id="id4419346">
+      <title>Sentencias de secuenciación</title>
+      <para id="id10654240"> Se trata de un tipo de sentencia que garantiza la ejecución secuencial (uno detrás de otro) de varios módulos de código. Cuando en el diagrama de <emphasis>LabVIEW</emphasis> son definidos varios módulos de código, en realidad no se sabe en qué orden van a ser ejecutados, es decir, no se sabe cuál de ellos se ejecutará en primer lugar y cuál en el último lugar. Hay aplicaciones en las que este orden de ejecución no es importante, pero en otras es de vital importancia. Por ello, en las aplicaciones donde el orden de ejecución de los distintos módulos es crítico, resulta imprescindible utilizar las sentencias de secuenciación para garantizar esa secuencia de ejecución de los módulos.</para>
+      <para id="id9791360">La herramienta de desarrollo de aplicaciones <emphasis>LabVIEW</emphasis> ofrece dos sentencias de secuenciación. La primera es la <emphasis>Flat Sequence Structure</emphasis> y se encuentra en <emphasis>Functions/Programming/Structures</emphasis>. Cuando es insertada en el diagrama de nuestra aplicación, aparece con una única ventana o <emphasis>Frame</emphasis>: es la unidad o elemento donde irá un módulo dado del código de nuestra aplicación. Para añadir más ventanas, se pulsa sobre la ventana con el botón derecho del ratón y se ejecuta <emphasis>Add Frame Before</emphasis> o <emphasis>Add Frame After</emphasis>, para añadir la ventana antes o después de la actual, respectivamente. Veamoslo con un ejemplo. Pensemos en dos operaciones aritméticas, suma y producto, que han de realizarse con dos operandos independientes en cada caso, donde primero se tiene que realizar la suma y luego el producto, <link target-id="id8645602"/>. Notar que las conexiones de los operandos han de realizarse desde los controles o exterior, hacia el interior de las ventanas.</para>
+      <figure id="id8645602">
+        <media id="idm4014416" alt=""><image src="../../media/graphics4-4847.png" mime-type="image/png" height="95" width="398"/></media>
+      </figure>
+      <para id="id8898921"> Cuando son necesarias muchas ventanas, porque así lo requiere la aplicación, aparece el problema del espacio en el diagrama, de tener que desplazar varias pantallas desde el inicio de la secuencia hasta su final. Entonces, lo lógico es sustituir la sentencia <emphasis>Flat Sequence Structure</emphasis> por la sentencia <emphasis>Stacked Sequence Structure</emphasis>, la cual funciona exactamente igual que la anterior, solo que apila las ventanas una encima de otra. Aunque a simple vista no sea posible ver la secuencia, resulta muy práctico su uso cuando el espacio disponible es pequeño. Repitamos el ejercicio anterior con esta nueva sentencia.</para>
+      <figure id="id9681082">
+        <media id="idm8241296" alt=""><image src="../../media/graphics5-fb3d.png" mime-type="image/png" height="90" width="384"/></media>
+      </figure>
+      <para id="id11439721">En este caso, al añadir la segunda ventana después de la primera, automáticamente aparece un índice para seleccionar cada una de las ventanas y acceder a su código, <link target-id="id9681082"/>.</para>
+    </section>
+    <section id="id11437542">
+      <title>Sentencias de repetición</title>
+      <para id="id10682008"> Se trata de sentencias que permiten la ejecución repetida de un módulo de código dado, mientras se cumpla la condición de ejecución de la sentencia (condición de permanencia en la sentencia). Los hay de dos tipo: <emphasis>for</emphasis> y <emphasis>while</emphasis>.</para>
+      <section id="id9650970">
+        <title>For</title>
+        <para id="id9777025">La sentencia iterativa for, al igual que el resto de las sentencias, se encuentra en <emphasis>Functions/Programming/Structures</emphasis>. Se trata de una sentencia que repite N veces la ejecución del módulo de código que se encuentra en su interior. Este parámetro, es fijado bien mediante una constante o bien mediante un control, y está asocido al índice i de la sentencia. El parámetro i parte de 0, y tras ejecutarse el código de la sentencia y comprobarse que aún es menor que N, se incrementa en una unidad y se repite la operación. Así hasta que i es igual que N, entonces, deja de ejecutarse la sentencia y el código que ella contiene. Veámoslo con un ejemplo sencillo donde N=3 y el código consiste en multiplicar por 1 el valor del índice <emphasis>i</emphasis> y visualizarlo, <link target-id="id10554586"/>.</para>
+        <figure id="id10554586">
+          <media id="idm2272336" alt=""><image src="../../media/graphics6-c316.png" mime-type="image/png" height="104" width="127"/></media>
+        </figure>
+        <para id="id10418842"> Al poner en ejecución esta aplicación, se inicializan los dos parámetros de la sentencia, N=3 y i=0, y a continuación comienza a ejecutarse la parte repetitiva o iterativa:</para>
+        <list list-type="enumerated" id="id9221757">
+          <item>como se cumple que i&lt;N, 0&lt;3, entonces se ejecuta y se visualiza 1xi=1x0=0. A continuación se incrementa i, es decir, i=i+1=0+1=1</item>
+          <item>como se cumple que i&lt;N, 1&lt;3, entonces se ejecuta y se visualiza 1xi=1x1=1. A continuación se incrementa i, es decir, i=i+1=1+1=2</item>
+          <item>como se cumple que i&lt;N, 2&lt;3, entonces se ejecuta y se visualiza 1xi=1x2=2. A continuación se incrementa i, es decir, i=i+1=2+1=3</item>
+          <item>como no se cumple que i&lt;N, 3&lt;3, entonces no se ejecuta el código, ni tampoco se incrementa i, con lo que deja de ejecutarse la sentencia for.</item>
+        </list>
+        <para id="id11019651">Así, el resultado final de la ejecución de este ejemplo queda como se puede ver en la <link target-id="id9984748"/>. Entonces, un ciclo for se ejecuta N veces y su indice i se va incrementando desde 0 a N-1.</para>
+        <figure id="id9984748">
+          <media id="idm3544288" alt=""><image src="../../media/graphics7-390a.png" mime-type="image/png" height="31" width="48"/></media>
+        </figure>
+        <para id="id10554563">Es posible anidar varias sentencias <emphasis>for</emphasis>, es decir, introducir sentencias <emphasis>for</emphasis> con sus módulos de código en otras sentencias <emphasis>for</emphasis>. Quizás, el caso más usual de sentencias anidadas sea el de una sentencia <emphasis>for</emphasis> dentro de otra <emphasis>for</emphasis>, o si no, dentro de una sentencia <emphasis>while</emphasis>. P.e., si se desea que la aplicación anterior se repita 4 veces, entonces lo que se había hecho para el ejemplo aterior es introducido dentro de una nueva sentencia cuyo parámetro N lo fijamos a 4, tal y como se vé en la <link target-id="id9337466"/>.</para>
+        <figure id="id9337466">
+          <media id="idm5638992" alt=""><image src="../../media/graphics8-7028.png" mime-type="image/png" height="123" width="173"/></media>
+        </figure>
+      </section>
+      <section id="id8170141">
+        <title>While</title>
+        <para id="id9681712"> La sentencia de repetición <emphasis>while</emphasis> ya se ha descrito brevemente en la primera parte de este curso. Se trata de una sentencia que permite ejecutar de forma repetida el código que se encuentra definido en su interior mientras se cumpla la condición de permanencia o de ejecución de esta sentencia. La condición de permanencia es un elemento de tipo bit, es decir, de tipo booleano, y para que la sentencia <emphasis>while</emphasis> ejecute el código que se encuentra en su interior, el valor del elemento booleano de permanencia ha de ser de <emphasis>false</emphasis> (falso). En el momento en que este elemento adquiera el valor <emphasis>true</emphasis> (verdadero), la condición de permanencia desaparece y el ciclo <emphasis>while</emphasis> deja de ejecutarse. Se dice que se sale del bucle <emphasis>while</emphasis>, con lo que deja de ejecutarse el código que se encuantra en su interior.</para>
+        <para id="id10800865"> Normalmente, la condición de permanencia suele ser el resultado de una operación lógica, o bien, un pulsador de tipo <emphasis>STOP</emphasis>. Otro elemento que contiene la sentencia <emphasis>while</emphasis> es el índice <emphasis>i</emphasis>. Este elemento indica el numero de veces que se ha ejecutado el código que se encuentra en el interior de la sentencia.</para>
+        <para id="id9876706">Un elemento que se suele utilizar mucho a la hora de comprobar el funcionamiento en tiempo de ejecución es el temporizador <emphasis>Wait (ms)</emphasis>. Este objeto se encuentra en <emphasis>Functions/Programming/Timing</emphasis> y lo que hace es insertar un retardo temporal definido en milisegundos (ms) fijado en su entrada (lado izquierdo). El ejemplo que se muestra en <link target-id="id7472616"/>, muestra la versión del ejercicio anterior, <link target-id="id9337466"/>, pero con una sentencia externa de tipo <emphasis>while</emphasis>, donde se ha insertado un retardo un retardo de 1 segundo en la ejecución del ciclo <emphasis>for</emphasis> interno.</para>
+        <figure id="id7472616">
+          <media id="idm5308544" alt=""><image src="../../media/graphics9-d32c.png" mime-type="image/png" height="164" width="166"/></media>
+        </figure>
+      </section>
+    </section>
+    <section id="id10937780">
+      <title>Nodos de realimentación y Registros de desplazamiento</title>
+      <para id="id3869931">Los nodos de realimentación y registros de desplazamiento son objetos que están relacionados con las sentencias de repetición. Se trata de elementos que se utilizan en módulos de código donde algún o algunos valores pasados son utilizados en el cálculo actual. P.e., si queremos obtener el valor actual de un parámetro donde para obtenerlo hace falta sumar un 2 al valor anterior del mismo, es decir <emphasis>y=y+2</emphasis> (<emphasis>léase</emphasis><emphasis> y_actual= y_anterior+2</emphasis>), entonces es necesario utilizar un nodo de realimentación o si no un registro de desplazamiento, tal y como se ve en la <link target-id="id9582307"/> derecha.</para>
+      <para id="id6742309">Para introducir un nodo de realimentación en el diagrama <link target-id="id9582307"/> izquierda, se inserta un objeto <emphasis>Feedback Node</emphasis> desde <emphasis>Functions/Programming/Structure</emphasis>, cuya salida se conecta con la otra entrada del sumador, y la salida de éste con la entrada del nuevo objeto. A acontinuación, clickando con el botón derecho del ratón sobre el nuevo objeto, se ejecuta <emphasis>Move Initializer One Loop Out</emphasis>, con lo que el elemento que permite insertar el valor inicial del valor anterior, se desplaza a la sentencia repetitiva, donde se le asigna un valor inicial, en este caso 3.</para>
+      <figure id="id9582307">
+        <media id="idp2723088" alt=""><image src="../../media/graphics10-60e1.png" mime-type="image/png" height="101" width="329"/></media>
+      </figure>
+      <para id="id9582331">Para el caso del registro de desplazamiento, también se parte del diagrama de <link target-id="id9582307"/> izquierda del caso anterior, solo que ahora nos ubicamos con el ratón en la parte derecha de la sentencia <emphasis>for</emphasis>, justo en el límite, y clickando con el botón derecho ejecutamos <emphasis>Add Shift Register</emphasis>. Seguidamente aparecen dos flechas, <link target-id="id9619811"/>, donde la de la izquierda permite asignar el valor inicial del valor anterior, igual que en caso anterior, y es conectada a la otra entrada del sumador. En cuanto a la flecha de la derecha, la salida del sumador se conecta a ella. </para>
+      <figure id="id9619811">
+        <media id="idm1713888" alt=""><image src="../../media/graphics11-b7e0.png" mime-type="image/png" height="98" width="149"/></media>
+      </figure>
+      <para id="id9620277">Cuando la ecuación a implementar tiene varios valores anteriores, p.e., el valor anterior y su anterior, <emphasis>y(k-1)</emphasis> e <emphasis>y(k-2)</emphasis>, respectivamente, siendo el valor actual <emphasis>y(k)</emphasis>, entonces hay que añadir más elementos a la izquierda de la sentencia <emphasis>for</emphasis>, clicando sobre la flecha que se encuentra ahí y ejecutando <emphasis>Add Element</emphasis>. Cada nuevo elemento insertado es anterior al anterior y se puede inicializar de forma individual. P.e., el siguiente diagrama, <link target-id="id9847097"/>, representa a la ecuación en diferencias <emphasis>y(k)=y(k-1)+2+3*y(k-2)</emphasis>.</para>
+      <figure id="id9847097">
+        <media id="idm17296" alt=""><image src="../../media/graphics12-eab2.png" mime-type="image/png" height="100" width="209"/></media>
+      </figure>
+    </section>
+    <section id="id9250064">
+      <title>Ejercicios propuestos</title>
+      <exercise id="id10103762">
+        <problem id="idp3694992">
+          <para id="id9494879">Desarrollar un instrumento virtual que proporcione el valor de una de las cuatro operaciones aritméticas con dos operandos, según el valor del control <emphasis>Operación</emphasis> (si es 0, suma, si es 1, resta, si es 2, producto, y si es 3, división). La aplicación dispondrá de un pulsador STOP para que deje de ejecutarse.</para>
+        </problem>
+      </exercise>
+      <exercise id="id6502156">
+        <problem id="idm1109712">
+          <para id="id6502159">Realiza un instrumento virtual que genere las primeras 10 coordenadas y, u ordenadas, de una recta del plano Cartesiano, cuya ecuación es <emphasis>y=m x + d</emphasis>, siendo <emphasis>m</emphasis> la pendiente positiva, <emphasis>d</emphasis> el origen, positivo o negativo, y <emphasis>x</emphasis> la ordenada abcisa positiva. Utiliza la sentencia for.</para>
+        </problem>
+      </exercise>
+      
+      <exercise id="id9620456">
+        <problem id="idp4921200">
+          <para id="id9511711">Construye un VI que genere X números aleatorios entre 0 y 7 con la función <emphasis>Random Number</emphasis>. X está condicionado al primer número generado fuera del rango pedido. </para>
+        </problem>
+      </exercise>
+      <exercise id="id6007746">
+        <problem id="idm7167248">
+          <para id="id9746949">Construye un VI que genere X números aleatorios entre 4 y 8 con la función <emphasis>Random Number</emphasis>. X está condicionado al primer número generado fuera del rango pedido.</para>
+        </problem>
+      </exercise>
+      <exercise id="id6692990">
+        <problem id="idm2103120">
+          <para id="id6692993">Implementar la ecuación en diferencias <emphasis>y(k)=[4 – 3*y(k-1)+ 53*y(k-2)-34*y(t-3)]/7</emphasis>, siendo los valores iniciales los siguientes: <emphasis>y(k-1)in= -2; y(k-2)in= 6.79; y(k-3)in= 12,09</emphasis>;</para>
+        </problem>
+      </exercise>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,132 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Arrays y Clusters en LabVIEW</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>d213fe87-c4ba-411a-afc1-e8473c91dbf0</md:uuid>
+</metadata>
+  <content>
+    <section id="id8016138">
+      <title>Tipos de datos</title>
+      <para id="id8989232"><emphasis>LabVIEW</emphasis> soporta principalmente 4 tipos de datos. Los números enteros o <emphasis>integer</emphasis>, los números reales de coma flotante (con decimales) o <emphasis>float/double</emphasis>, los elementos booleanos o de tipo bit, <emphasis>boolean</emphasis>, y las cadenas de caracteres o <emphasis>string</emphasis>. En el diagrama de cualquier aplicación, los elementos enteros aparecen con el color azul marino, los reales o doubles con color naranja, los booleanos en verde, y las cadenas de caracteres en rosa. Existen más tipos de datos en <emphasis>LabVIEW</emphasis>, como los reales de coma fija, etc, pero no los analizaremos dado que quedan fuera del interés de este curso básico.</para>
+      <para id="id7484540">Dentro de los enteros, podemos hacer una clasificación por su tamaño en bits, habiendo enteros de 8 bits, de 16, de 32 y de 64 bits. Además, es posible definirlos tanto con signo (<emphasis>signed</emphasis>, con prefijo <code display="inline">I</code>), como sin signo (<emphasis>unsigned</emphasis>, con prefijo <code display="inline">U</code>). Así, un entero con signo de 16 bits se define como <code display="inline">I16</code>. Por defecto, un entero es creado con el tamaño de 32 bits y es de tipo <emphasis>signed</emphasis>, <code display="inline">I32</code>, aunque si se desea cambiar, se pulsa el botón derecho del ratón con el cursor sobre el objeto (una constante, un indicador) y se ejecuta <emphasis>Properties</emphasis>, donde a continuación se pulsa sobre <emphasis>Representation</emphasis> y se selecciona otro formato, p.e. <code display="inline">U8</code> y se pulsa <emphasis>OK</emphasis>, tal como se refleja en <link target-id="id8555550"/>.</para>
+      <figure id="id8555550">
+        <media id="idp9310816" alt=""><image src="../../media/graphics1-d611.png" mime-type="image/png" height="276" width="277"/></media>
+      </figure>
+      <para id="id9035256"> La mayoría de las funciones matemáticas consideran que tanto sus entradas como la salida son de tipo double. El tipo double es el número de coma flotante de doble precisión y se representa con <code display="inline">DBL</code>. </para>
+      <para id="id7586289"> Todas las entradas y salidas de las funciones de la paleta <emphasis>Functions/Programming/Boolean</emphasis> son de tipo booleano, así como las salidas de las funciones de la paleta <emphasis>Functions/Programming/Comparison</emphasis>. </para>
+      <para id="id7227896"> Los datos de tipo cadena se utilizan para enviar y recibir mensajes de texto entre los distintos módulos y funciones de una aplicación. Se utilizan para el envío y recepción de información. Muchas funciones de librería tienen una entrada y también una salida de este tipo. Normalmente la entrada está conectada a la salida de este tipo de la función anterior, y a su vez, la salida está conectada a la entrada de la siguiente función. En este sentido, al final de la secuencia de funciones, se coloca un indicador para ver si se ha producido o no algún error, y para saber de qué tipo es. En el módulo dedicado a la gestión de ficheros se podrá ver mejor su uso.</para>
+      <para id="id7487671">Cuando interesa convertir un tipo de dato en otro, entonces se utiliza un conversor de tipo. Se trata de un objeto que convierte un tipo de dato en otro. En la paleta <emphasis>Functions/Programming/Numeric/Conversion</emphasis>, existen objetos para convertir números a números reales de simple precisión, doble precisión e incluso de coma fija, o también números enteros de distintos tamaños con o sin signo, etc,  <link target-id="id7949475"/>derecha. Existe otra paleta, <emphasis>Functions/Programming/String/String-Number Conversion</emphasis>, donde hay varias funciones para convertir cadenas de texto o strings en números de distinto formato, y otras que hacen la función inversa, <link target-id="id7949475"/> izquierda. Finalmente, en la paleta de <emphasis>Functions/Programming/Array</emphasis>, y también en la de <emphasis>Functions/Programming/Cluster</emphasis>, podemos encontrar conversores de tipo entre array y cluster.</para>
+      <figure id="id7949475">
+        <media id="idp10352608" alt=""><image src="../../media/graphics2-3038.png" mime-type="image/png" height="40" width="87"/></media>
+      </figure>
+    </section>
+    <section id="id8920348">
+      <title>Arrays</title>
+      <para id="id9069618"> Los arrays son conjuntos de datos o elementos del mismo tipo, accesibles mediante los índices del propio array. En <emphasis>LabVIEW</emphasis> existen arrays unidimensionales, y también los bidimensionales. El array es en realidad una tabla de dos dimensiones, donde los elementos guardados en sus casillas son accesibles mediante los índices de la tabla, conocidos como filas y columnas. </para>
+      <para id="id8785160"> Hay dos formas de inicializar los arrays. La primera es utilizando las funciones específicas de inicialización de arrays, y la otra, mediante las sentencias repetitivas (<emphasis>for, while</emphasis>).</para>
+      <section id="id7990312">
+        <title>Arrays unidimensionales</title>
+        <para id="id7973725">Los arrays unidimensionales son aquellos que tienen una única fila y C columnas, es decir son arrays de tamaño 1xC. Para inicializar un array unidimensional utilizando las funciones de arrays, se ejecuta en el diagrama<emphasis> Functions/Programming/Array/Build Array</emphasis> , <link target-id="id7502889"/>, y se coloca esa función sobre el diagrama, <link target-id="id8787623"/> izquierda.</para>
+        <figure id="id7502889">
+          <media id="idp18638256" alt=""><image src="../../media/graphics3-18d6.png" mime-type="image/png" height="271" width="320"/></media>
+        </figure>
+        <para id="id7559649">A continuación se marca ese objeto con el ratón y se extiende hacia abajo dándole el tamaño de C columnas, p.e. 3 columnas, <link target-id="id8787623"/> centro. Seguidamente se generan las tres entradas (desde las 3 entradas del objeto <emphasis>Build Array</emphasis>), es decir, los controles que proporcionarán los valores de los 3 elementos del array, y también el indicador que muestra el contenido del array (desde la salida del objeto <emphasis>Build Array</emphasis>), <link target-id="id8787623"/> derecha.</para>
+        <figure id="id8787623">
+          <media id="idp15440816" alt=""><image src="../../media/graphics4-f275.png" mime-type="image/png" height="48" width="508"/></media>
+        </figure>
+        <para id="id8031057">A esto, le añadimos una sentencia <emphasis>while</emphasis> para que la aplicación se ejecute de forma continua. Al ejecutar la aplicación, se asignan los valores de los elementos del array en los controles correspondientes, <link target-id="id7990897"/>. El array puede ser indexado desde su índice (elemento de control del array), es decir, cada elemento del array se puede ver desde el su índice. Como se puede observar en <link target-id="id7990897"/> izquierda, el índice comienza en 0, y no en 1.</para>
+        <figure id="id7990897">
+          <media id="idp19957424" alt=""><image src="../../media/graphics5-dafa.png" mime-type="image/png" height="151" width="489"/></media>
+        </figure>
+        <para id="id9005295">Además, si se pretende acceder a un elemento inexistente del array, se muestra un 0, <link target-id="id9251027"/>.</para>
+        <figure id="id9251027">
+          <media id="idp10664320" alt=""><image src="../../media/graphics6-3e04.png" mime-type="image/png" height="37" width="86"/></media>
+        </figure>
+        <para id="id7226725">Cuando los array son pequeños, o cuando no hay problemas de espacio en el panel, se puede prescindir del uso del índice. Para ello, se expande el array con la herramienta <emphasis>Position/Size/Select</emphasis> de la paleta de herrramientas, habiendo seleccionado previamente el elemento visible del array (el primero), <link target-id="id7488714"/>.</para>
+        <figure id="id7488714">
+          <media id="idp18273136" alt=""><image src="../../media/graphics7-e5f6.png" mime-type="image/png" height="48" width="261"/></media>
+        </figure>
+        <para id="id9207586"> Otra forma de inicializar los arrays es utilizando una sentencia <emphasis>for</emphasis>. Si se emplea una sentencia de tipo <emphasis>for</emphasis> que se ejecuta N veces, se crea, a la salida de la misma, un array de 1 fila y N columnas. El valor que se asigna a cada elemento del array es aquél que se obtiene de esa iteración de la sentencia <emphasis>for</emphasis>. Este valor puede ser incluso una función del índice de esta sentencia, además de otras cosas.</para>
+        <para id="id8032254">En el siguiente ejemplo, <link target-id="id7508927"/>, se muestra cómo cada elemento del array proviene de una función que genera números aleatorios (<emphasis>Functions/Programming/Numeric/Random Number</emphasis>) entre 0 y 1. El número de elementos creados viene fijado por el valor del número de iteraciones de la sentencia <emphasis>for</emphasis>, que en este caso se fija en 3 mediante una constante.</para>
+        <figure id="id7508927">
+          <media id="idp14583344" alt=""><image src="../../media/graphics8-54ff.png" mime-type="image/png" height="159" width="463"/></media>
+        </figure>
+        <para id="id8072139">Como se puede observar en <link target-id="id7508927"/> izquierda, el cuarto elemento no existe (es 0), ya que el número de elementos del array está fijado por el número de iteraciones de la sentencia <emphasis>for</emphasis>.</para>
+        <para id="id8964890">En teoría, también se podría utilizar la sentencia de repetición <emphasis>while</emphasis> para crear un array unidimensional. Pero esto no suele ser lo habitual, ya que normalmente esta sentencia se ejecuta muchisimas veces el código que se encuentra en su interior, es decir, no suele estar limitada por un número de iteraciones fijo, sino que depende de que se dé una condición dada. Esto significa que hasta que se dé esa condición de parada, ha habido un montón de iteraciones, lo cual se traduce en que se ha generado un array de muchisimos elementos, con el consiguiente consumo de memoria que esto conlleva y problemas que puede generar en el sistema donde se ejecuta la aplicación. Por todo ello, conviene que la generación de arrays con sentencias repetitivas se haga solamente con los de tipo <emphasis>for</emphasis>, y nunca o casi nunca con los de tipo <emphasis>while</emphasis>.</para>
+      </section>
+      <section id="id7486172">
+        <title>Arrays bidimensionales</title>
+        <para id="id7970909"> Se trata de arrays de más de una fila, con lo que se consiguen arrays de F filas y C columnas, es decir arrays FxC. Como se puede deducir, un array de dos dimensiones es ideal para guardar o representar tablas de datos, ya que la tabla tiene la misma organización bidimensional de filas y columnas que el array bidimensional.</para>
+        <para id="id9301806">En cuanto a la inicialización de estos arrays, tenemos las dos formas explicadas que para los arrays unidimensionales. Por una parte, se pueden inicializar utilizando las funciones <emphasis>Build Array</emphasis>, y por otra, mediante las sentencias de repetición <emphasis>for</emphasis>. Como hemos podido ver con los arrays de una dimensión, una función <emphasis>Build Array</emphasis> crea un array de una única fila. Pues bien, para crear un array de dos dimensiones, lo que se hace es unir varios arrays de una dimensión en un array mediante otra función <emphasis>Build Array</emphasis>. La única condición que han de cumplir estos arrays unidimensionales, es que todos ellos tengan el mismo número de elementos, es decir, que el mismo número de columnas, <link target-id="id9323334"/>.</para>
+        <figure id="id9323334">
+          <media id="idp19111296" alt=""><image src="../../media/graphics9-cc87.png" mime-type="image/png" height="250" width="542"/></media>
+        </figure>
+        <para id="id8557409">A continuación, tenemos un ejemplo donde podemos ver cómo se genera un array de números aleatorios de dos dimensiones utilizando dos sentencias de repetición <emphasis>for</emphasis>, una dentro de la otra, <link target-id="id8029131"/>. La sentencia <emphasis>for</emphasis> interna, tal y como hemos visto en el caso unidimensional, genera cada una de las filas del array, por lo tanto su número de iteraciones define el número de columnas o elementos de cada fila. Por ello, esto queda fijado mediante un control llamado <emphasis>Columnas</emphasis>. Así mismo, la sentencia <emphasis>for</emphasis> externa, permite repetir varias veces lo que ocurre en su interior: generar una fila de array. Entonces, fijando su número de iteraciones, se fija el número de filas que tendrá el array resultante, mediante otro control llamado <emphasis>Filas</emphasis>.</para>
+        <figure id="id8029131">
+          <media id="idp10921904" alt=""><image src="../../media/graphics10-8d3f.png" mime-type="image/png" height="223" width="532"/></media>
+        </figure>
+        <para id="id8338384"> Llegados a este punto, conviene notar la diferencia que hay, observando las líneas de los datos, entre un número escalar (salida de la función de número aleatorio), un array unidimensional (salida del <emphasis>for</emphasis> interno) y un array bidimensional (salida del <emphasis>for</emphasis> externo). Se observa que la línea más delgada corresponde al número escalar. Una línea algo más gruesa representa un array de una dimensión o de una fila, y una línea más gruesa aún, representa un array bidimensional. </para>
+      </section>
+    </section>
+    <section id="id8798470">
+      <title>Clusters</title>
+      <para id="id8900555">Los <emphasis>clusters</emphasis> son tipos de datos compuestos por varios elementos de distintos tipos. Son los equivalentes a las estructuras de datos del lenguaje de programación C y similares, o a las clases, en los lenguajes de <emphasis>Programación Orientados a Objetos</emphasis>, como el <emphasis>C++, Java</emphasis>, etc. En <emphasis>LabVIEW</emphasis>, cuando interesa unir varios tipos de datos bajo el mismo nombre, entonces se crea un <emphasis>cluster</emphasis> con ese nombre. Esto, suele ser muy práctico para que en el diagrama, aparezcan muchas menos líneas de conexiones y éstas estén agrupadas según un criterio dado. En el ejemplo que viene a continuación, se muestra cómo tres tipos de datos distintos (número real, número entero y cadena de caracteres) que se encuentran en los controles de la izquierda son llevados a la parte derecha del diagrama como una única unidad, <link target-id="id7557263"/> derecha. Para aguparlos, se utiliza el objeto <emphasis>Bundle</emphasis>, <link target-id="id7624541"/> izda., que se encuentra en <emphasis>Functions/Programming/Cluster, Class &amp; Variants</emphasis>. En cambio, en el lado derecho, tanto del diagrama como del panel, se encuentran los indicadores que permiten visualizar los valores enviados desde los controles antes mencionados. Para ello, se utiliza el objeto <emphasis>Unbundle</emphasis>, <link target-id="id7624541"/> dcha., cuya misión es obtener los elementos individuales del grupo que llega a su entrada.</para>
+      <figure id="id7624541">
+        <media id="idp14447360" alt=""><image src="../../media/graphics11-6609.png" mime-type="image/png" height="34" width="82"/></media>
+      </figure>
+      <figure id="id7557263">
+        <media id="idp17374976" alt=""><image src="../../media/graphics12-c858.png" mime-type="image/png" height="155" width="476"/></media>
+      </figure>
+      <para id="id7989709"> Otra interesante aplicación de los <emphasis>clusters</emphasis> es la de crear aplicaciones con menús de botones y máquinas de estados. Para crear un menú de botones se inserta un objeto <emphasis>cluster</emphasis> desde el panel, desde <emphasis>Controls/Classic/Cluster/Classic Array, Matriz &amp; Cluster</emphasis>. A continuación se insertan dos botones de tipo <emphasis>OK</emphasis> a los que se les elimina la etiqueta externa, en el <emphasis>cluster</emphasis>. Se edita cada uno de ellos con el botón derecho del ratón y ejecutando <emphasis>Properties</emphasis> y en la ficha <emphasis>Appearance</emphasis>, en <emphasis>Off text</emphasis>, se elimina <emphasis>OK</emphasis> y se escribe “+” en un caso y “-“ en el otro.</para>
+      <para id="id7229119">En el diagrama, se introduce una sentencia <emphasis>while</emphasis> para controlar la ejecución de la aplicación, donde el <emphasis>cluster</emphasis> anterior es introducido en ella, <link target-id="id7225559"/>. A la salida del <emphasis>cluster</emphasis> se conecta un conversor de tipo <emphasis>Cluster to Array</emphasis>, que se encuentra en <emphasis>Functions/Programming/Array</emphasis>. A su vez, la salida de este conversor es llevado a la entrada superior del <emphasis>Search 1D Array</emphasis>, donde su entrada inferior está conectada a una constante booleana de valor <emphasis>true</emphasis>. Asi, este objeto proporciona el índice del array cuyo elemento ha proporcionado un <emphasis>true</emphasis>, es decir, en este caso, cuyo botón ha sido pulsado. De este modo, si se pulsa el primer botón, la función <emphasis>Search 1D Array</emphasis> devuelve un 0, si se pulsa el segundo, devuelve un 1, y así si hubiera más botones. En cambio, si no se pulsa ningún botón, la función devuelve –1.</para>
+      <para id="id7537659">En este sentido, si a la salida de esta función conectamos una sentencia de selección múltiple, entonces se puede colocar en cada sentencia el código asociado al botón o función que se quiera realizar. Así, tendriamos una sentencia o estado de reposo para cuando no se pulsa ningún pulsador (-1), otro para la suma de los dos operandos (0), y finalmente para le resta de los operandos (1). Además del código asociado a cada estado o función, se colocará una constante de tipo cadena o string, que irá conectado a la salida de la sentencia para que en el panel se pueda ver el estado en el que se encuentra la aplicación en todo momento. Dendro de la sentencia <emphasis>while</emphasis>, se añadirá un temporizador de 1 segundo para que se puedan ver los resultados en tiempo de ejecución de la aplicación.</para>
+      <figure id="id7225559">
+        <media id="idp9415808" alt=""><image src="../../media/graphics13-121f.png" mime-type="image/png" height="169" width="495"/></media>
+      </figure>
+      <para id="id7408928">La aplicación anterior vuelve automáticamente al estado de reposo. Otra forma de hacer la misma aplicación es introduciendo el código del cluster y la <emphasis>Search 1D Array</emphasis> en la sentencia asociada al reposo, pero añadiendo también un registro de desplazamiento a la sentencia <emphasis>while</emphasis>, <link target-id="id8898347"/>. Así, tal y como se puede ver, el estado inicial es el de reposo (-1), y al pulsar alguno de los dos pulsadores, la salida de la <emphasis>Search 1D Array</emphasis> proporciona el código asociado y vía registro de desplazamiento vuelve por la entrada de la sentencia múltiple para ejecutar el correspondiente caso. Pero cada uno de estos casos lleva el valor del código del estado que se quiere ejecutar tras su ejecución, que en nuestro caso es –1, el de reposo (ver los dos casos de <link target-id="id7499920"/>).</para>
+      <figure id="id8898347">
+        <media id="idp10415520" alt=""><image src="../../media/graphics14-7098.png" mime-type="image/png" height="181" width="496"/></media>
+      </figure>
+      <figure id="id7499920">
+        <media id="idp19061680" alt=""><image src="../../media/graphics15-6404.png" mime-type="image/png" height="171" width="520"/></media>
+      </figure>
+      <para id="id9207426"> Esto muestra claramente que estos códigos no tienen por qué ser el de reposo, si no otros que el programador desee. De esta forma se pueden definir ciclos de máquinas de estados, aunque <emphasis>LabVIEW</emphasis> ya posee objetos específicos para realizar máquinas de estados.</para>
+    </section>
+    <section id="id7547085">
+      <title>Ejercicios propuestos</title>
+      
+      <exercise id="element-688"><problem id="idp13446848">
+  <para id="element-413">
+    Construye un instrumento virtual que genere un array unidimensional con los valores de dos ciclos completos de la función trigonométrica seno.
+  </para>
+</problem></exercise>
+      <exercise id="element-529"><problem id="idp6975328">
+  <para id="element-831">
+    Construye un instrumento virtual que genere un array bidimensional con los valores de dos ciclos completos de las funciones trigonométricas seno (1ª fila), coseno (2ª fila), tangente (3ª fila) y cotangente (4ª fila). 
+  </para>
+</problem>
+</exercise>
+      <exercise id="element-607"><problem id="idp16475600">
+  <para id="element-556">
+    Construye un instrumento virtual que genere un array bidimensional con los valores de 4 fechas en el formato: día mes año (p.e 23 de septiembre de 2008: 23 09 2008).
+  </para>
+</problem>
+</exercise><exercise id="id8910625">
+        <problem id="idp12370880">
+          <para id="id9184778">Construye un VI con un menú de botones que realiza exactamente las mismas operaciones que la aplicación <emphasis>Calculadora2.vi</emphasis>, es decir, con los dos operandos, las operaciones artméticas +, -, * y división. Con el operando 1 tomando como el ángulo en grados, las operaciones trigonométricas sin, cos, tan y cotan, y con el operando 2, la raíz cuadrada y la inversa. Todos los resultados se muestran en el mismo indicador.</para>
+        </problem>
+      </exercise>
+      
+      <exercise id="element-603"><problem id="idp19429872">
+  <para id="element-654">Realiza un VI que implementa la máquina de estados de <link target-id="id8557623"/>. Los estados son los círculos, y las letras, las acciones para pasar de un estado a otro (pulsadores).
+  </para>
+</problem>
+</exercise><figure id="id8557623">
+        <media id="idp19067136" alt=""><image src="../../media/graphics16-cb20.png" mime-type="image/png" height="187" width="285"/></media>
+      </figure>
+      <exercise id="id9345276">
+        <problem id="idp19956384">
+          <para id="id9345278">Realiza un VI con un menú de botones que realiza varias operaciones con dos arrays cuadrados de 3x3, A y B. Elige el modo de iniciaización más cómodo para los arrays. Las operaciones son: para los dos arrays: +, -, * , para el array A: determinante, inversa, transpuesta.</para>
+        </problem>
+      </exercise>
+    </section>
+  </content>
+</document>
